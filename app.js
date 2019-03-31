@@ -4,12 +4,21 @@ const moment = require('moment');
 
 const  time = moment().format("DD/MM/YYYY hh:mm:ss a");
 
+app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('welcome to Penaa');
+  res.render('index');
 });
 
 const port = 9000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server started at port ${port} on ${time}`);
 })
+
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log('New user connected');
+});
