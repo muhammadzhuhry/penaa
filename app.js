@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-const port = 9000;
+const port = process.env.PORT || 9000;
 const server = app.listen(port, () => {
   console.log(`Server started at port ${port} on ${time}`);
 })

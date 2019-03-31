@@ -1,5 +1,5 @@
 $(function() {
-  var socket = io.connect('http://localhost:9000');
+  var socket = io.connect('https://penaa.herokuapp.com/');
 
   var message = $("#message");
   var username = $("#username");
