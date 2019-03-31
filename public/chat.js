@@ -17,7 +17,11 @@ $(function() {
   });
 
   send_username.click(function(){
-    socket.emit('change_username', {username: username.val()});
+    var usrnm = username.val();
+    if(usrnm.length === 0){
+      usrnm = 'Anonymous';
+    }
+    socket.emit('change_username', {username: usrnm});
   });
 
 	message.bind("keypress", () => {
